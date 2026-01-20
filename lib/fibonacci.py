@@ -1,24 +1,30 @@
 # TODO: Write a recursive function to return the nth Fibonacci number
 
 def fibonacci(n):
-    """
-    Return the nth Fibonacci number recursively.
+    """Return the nth Fibonacci number recursively."""
+# Base cases:
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
 
-    TODO:
-    - Define base case: return 0 when n == 0
-    - Define base case: return 1 when n == 1
-    - Otherwise, return fibonacci(n - 1) + fibonacci(n - 2)
-    """
-    pass
+# Recursive case:
+    return fibonacci(n - 1) + fibonacci(n - 2)
 
 
 def fibonacci_debug(n, depth=0):
-    """
-    Return the nth Fibonacci number with debug output.
+    print("  " * depth + f"fibonacci({n}) called")
 
-    TODO:
-    - Print the call at each depth to visualize the stack
-    - Use indentation to show recursion levels
-    - Implement same logic as `fibonacci` but with print statements
-    """
-    pass
+    if n == 0:
+        print("  " * depth + "return 0")
+        return 0
+    elif n == 1:
+        print("  " * depth + "return 1")
+        return 1
+
+    val = fibonacci_debug(n - 1, depth + 1) + fibonacci_debug(n - 2, depth + 1)
+    print("  " * depth + f"return {val} for fibonacci({n})")
+    return val
+
+if __name__ == "__main__":
+	fibonacci_debug(5)
